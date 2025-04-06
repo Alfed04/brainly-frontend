@@ -1,10 +1,15 @@
+import { DeleteIcon } from "../icons/DeleteIcon";
 import { ShareIcon } from "../icons/ShareIcon";
 
-export function Card({title , link , type}:{
+export function Card({title , link , type }:{
     title: string,
     link: string,
     type: "twitter"|"youtube"
 }){
+    function deleteContent(){
+        console.log("Delete function called")
+    }
+    
     return <div>
      <div className="p-4 bg-white rounded-md border-gray-200 border max-w-72 min-w-72 min-h-64">
         {/* card topbar */}
@@ -21,8 +26,8 @@ export function Card({title , link , type}:{
                 <div className="pr-2">
                     <ShareIcon/>
                 </div>
-                <div>
-                <ShareIcon/>
+                <div className="hover:cursor-pointer">
+                <DeleteIcon deleteContent={deleteContent}/>
                 </div>
             </div>
         </div>

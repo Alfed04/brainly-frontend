@@ -2,8 +2,10 @@ import { ReactElement } from "react";
 interface ButtonProps {
     variant: "primary"|"secondary",
     text: string,
-    startIcon: ReactElement,
-    onClick?:()=> void
+    startIcon?: ReactElement,
+    onClick?:()=> void,
+    fullWidth?:Boolean,
+    loading?: Boolean
     // size: "sm"|"md"|"lg",
     // endIcon?: ReactElement,
 }
@@ -19,8 +21,8 @@ const variantStyles: any = {
 
 const defaultStyles: string = "px-4 py-2 rounded-md font-light flex items-center"
 
-function Button({ variant , text , startIcon, onClick}:ButtonProps){
-    return <button onClick={onClick} className={variantStyles[variant]+" "+defaultStyles}>
+function Button({ variant , text , startIcon, onClick ,fullWidth ,loading}:ButtonProps){
+    return <button onClick={onClick} className={variantStyles[variant]+" "+defaultStyles+`${fullWidth? " w-full flex justify-center items-center":""} ${loading?" opacity-45":""}`} disabled={loading}>
         <div className="pr-2">
             {startIcon}
         </div>
